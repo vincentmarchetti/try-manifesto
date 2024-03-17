@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>HTML + CSS</title>
+    <title>IIIF manifesto demo</title>
     <link rel="stylesheet" href="styles.css" />
     <script src="dist-umd/manifesto.js" type="application/javascript"></script>
     
@@ -18,7 +18,7 @@
         manifesto.loadManifest(manifest_url).then( (manifest_json) => 
         {
             const manifest = manifesto.parseManifest(manifest_json);
-            var label = manifest.getLabel().getValue("en");    	
+            var label = manifest.getLabel().getValue("zh");    	
             label_container.innerText=label;
         }).catch( (error) => { console.warn("manifesto error: " + error)});
     }
