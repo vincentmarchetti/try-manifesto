@@ -6,11 +6,38 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>HTML + CSS</title>
     <link rel="stylesheet" href="styles.css" />
+    <script src="dist-umd/manifesto.js" type="application/javascript"></script>
+    
+    <script>
+    function load_manifest(){
+        var manifest_url_container = document.getElementById("manifest-url-container");
+        var manifest_url = manifest_url_container.value;
+        
+        var label_container = document.getElementById("label-container");
+
+        manifesto.loadManifest(manifest_url).then( (manifest_json) => 
+        {
+            const manifest = manifesto.parseManifest(manifest_json);
+            var label = manifest.getLabel().getValue("en");    	
+            label_container.innerText=label;
+        }).catch( (error) => { console.warn("manifesto error: " + error)});
+    }
+    </script>
   </head>
   <body>
     <h1>Try manifesto</h1>
 
-    <div style="font-size: 18pt">
+    <div>
+    <button type="button" 
+            
+            onclick="load_manifest()">Load Manifest</button>
+    <input  class="input_texbox"
+            type="url" 
+            id="manifest-url-container" 
+            value="https://raw.githubusercontent.com/vincentmarchetti/iiif3dtsg/main/manifests/1_basic_model_in_scene/model_origin.json"/>
+    </div>
+    
+    <div id="label-display" >
       The label for this manifest is
       <span id="label-container"> (not loaded yet) </span>
     </div>
