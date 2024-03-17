@@ -18,7 +18,7 @@
         manifesto.loadManifest(manifest_url).then( (manifest_json) => 
         {
             const manifest = manifesto.parseManifest(manifest_json);
-            var label = manifest.getLabel().getValue("zh");    	
+            var label = manifest.getLabel().getValue("en");    	
             label_container.innerText=label;
         }).catch( (error) => { console.warn("manifesto error: " + error)});
     }
